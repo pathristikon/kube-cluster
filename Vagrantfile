@@ -55,7 +55,7 @@ Vagrant.configure(2) do |config|
     end
   end
 
-  NodeCount = 1
+  NodeCount = 2
   (1..NodeCount).each do |i|
     config.vm.define "node#{i}" do |node|
       node.vm.box               = "generic/ubuntu2004"

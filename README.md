@@ -22,15 +22,21 @@ cp -R /vagrant/config .kube/config
 kubectl version
 ```
 
+### Install metallb
+```
+helm repo add metallb https://metallb.github.io/metallb
+helm install metallb metallb/metallb -f /vagrant/metallb.yaml
+```
+
 ### Ingress Nginx Controller
 
 ```/bin/bash
-kubectl apply -f config/nginx-ingress.yaml
+kubectl apply -f /vagrant/nginx-ingress.yaml
 ```
+The nginx ingress is modified to get the public ip from metallb. You can check it out using:
 
-### Install metallb
-```
-helm install metallb metallb/metallb -f config/metallb.yaml
+```/bin/bash
+kubectl get svc -A
 ```
 
 ### Goodies
