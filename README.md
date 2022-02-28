@@ -22,4 +22,24 @@ cp -R /vagrant/config .kube/config
 kubectl version
 ```
 
+### Ingress Nginx Controller
+
+```/bin/bash
+kubectl apply -f config/nginx-ingress.yaml
+```
+
+### Install metallb
+```
+helm install metallb metallb/metallb -f config/metallb.yaml
+```
+
+### Goodies
+
+#### Change ip of the cluster API
+https://blog.scottlowe.org/2019/07/30/adding-a-name-to-kubernetes-api-server-certificate/
+
+
+### Setup internet access on nodes
+https://github.com/connectbaseer/vagrant-centos-k8s-ha-cluster
+
 Enjoy :)

@@ -1,3 +1,4 @@
 .vagrant
-data/joincluster.sh
-data/config
+config/joincluster.sh
+config/.kube
+.DS_Store
