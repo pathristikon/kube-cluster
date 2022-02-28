@@ -22,5 +22,10 @@ kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectca
 echo "[TASK 5] Generate and save cluster join command to /vagrant/joincluster.sh"
 kubeadm token create --print-join-command > /vagrant/.kube/joincluster.sh 2>/dev/null
 
+# set IP address to command
+# parse the kubeinit.log file, remove trailing slashes and spaces and append --apiserver-advertise-address at the end of the file
+cat /vagrant/.kube/kubeinit.log | grep -B 2 '\--control-plane' | tr -d '\n' | sed 's/\\//g' > /vagrant/.kube/controlplane-joincluster.sh 2>/dev/null
+echo $' --apiserver-advertise-address=$(/sbin/ifconfig eth1 | grep inet | awk \'{print $2}\')' >> /vagrant/.kube/controlplane-joincluster.sh
+
 echo "[TASK 6] Prepare Kubeconfig file"
 sudo cp -R /etc/kubernetes/admin.conf /vagrant/.kube/config

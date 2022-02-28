@@ -50,10 +50,12 @@ Vagrant.configure(2) do |config|
         v.nested  = true
         v.cpus    = 2
       end
+
+      node.vm.provision "shell", path: "config/.kube/controlplane-joincluster.sh", privileged: true
     end
   end
 
-  NodeCount = 3
+  NodeCount = 1
   (1..NodeCount).each do |i|
     config.vm.define "node#{i}" do |node|
       node.vm.box               = "generic/ubuntu2004"
