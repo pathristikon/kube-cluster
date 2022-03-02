@@ -46,10 +46,10 @@ apt install -qq -y kubeadm=1.20.11-00 kubelet=1.20.11-00 kubectl=1.20.11-00 >/de
 
 echo "[TASK 8] Update /etc/hosts file"
 cat >>/etc/hosts<<EOF
-192.168.56.2    on-demand.example.com     on-demand
-192.168.56.3    on-demand1.example.com    on-demand1
-192.168.56.11   node1.example.com         node1
-192.168.56.12   node2.example.com         node2
+192.168.100.100    on-demand.example.com     on-demand
+192.168.100.101    on-demand1.example.com    on-demand1
+192.168.100.110   node1.example.com         node1
+192.168.100.111   node2.example.com         node2
 EOF
 echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 

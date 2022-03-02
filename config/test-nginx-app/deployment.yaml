@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: nginx
-  replicas: 2
+  replicas: 10
   template:
     metadata:
       labels:
@@ -22,8 +22,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: nginx-service
-  annotations:
-    metallb.universe.tf/address-pool: default
 spec:
   selector:
     app: nginx
@@ -40,15 +38,9 @@ metadata:
   name: nginx-ingress-app
   annotations:
     ingress.kubernetes.io/rewrite-target: /
-    metallb.universe.tf/address-pool: default
 spec:
-  defaultBackend:
-    service:
-      name: nginx-service
-      port:
-        number: 80
   rules:
-  - host: test.example.com 
+  - host: test.example.com
     http:
       paths:
        - path: /

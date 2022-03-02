@@ -47,5 +47,5 @@ https://blog.scottlowe.org/2019/07/30/adding-a-name-to-kubernetes-api-server-cer
 
 ### Setup internet access on nodes
 https://github.com/connectbaseer/vagrant-centos-k8s-ha-cluster
-
+https://betterprogramming.pub/how-to-expose-your-services-with-kubernetes-ingress-7f34eb6c9b5a
 Enjoy :)

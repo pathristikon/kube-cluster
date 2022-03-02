@@ -14,7 +14,7 @@ sudo mkdir -p /vagrant/.kube
 
 echo "[TASK 3] Initialize Kubernetes Cluster"
 # --upload-certs to secrets so that the new masters can take them. Or move the certs manually
-kubeadm init --control-plane-endpoint="192.168.56.2:6444" --upload-certs --apiserver-advertise-address=192.168.56.2 --pod-network-cidr=192.168.0.0/16 >> /vagrant/.kube/kubeinit.log 2>/dev/null
+kubeadm init --control-plane-endpoint="on-demand.example.com:6444" --upload-certs --apiserver-advertise-address=192.168.100.100 --pod-network-cidr=192.168.0.0/16 >> /vagrant/.kube/kubeinit.log 2>/dev/null
 
 echo "[TASK 4] Deploy Calico network"
 kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectcalico.org/v3.18/manifests/calico.yaml >/dev/null 2>&1

@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
     node.vm.box_check_update  = false
     node.vm.box_version       = "3.3.0"
     node.vm.hostname          = "on-demand.example.com"
-    node.vm.network "private_network", ip: "192.168.56.2"
+    node.vm.network "public_network", bridge: "en7: USB 10/100/1000 LAN", ip: "192.168.100.100"
 
     node.vm.provider :virtualbox do |v|
       v.name    = "on-demand"
@@ -37,7 +37,7 @@ Vagrant.configure(2) do |config|
       node.vm.box_version       = "3.3.0"
       node.vm.hostname          = "on-demand#{i}.example.com"
 
-      node.vm.network "private_network", ip: "192.168.56.#{2+i}"
+      node.vm.network "public_network", bridge: "en7: USB 10/100/1000 LAN", ip: "192.168.100.10#{i}"
 
       node.vm.provider :virtualbox do |v|
         v.name    = "on-demand#{i}"
@@ -63,7 +63,7 @@ Vagrant.configure(2) do |config|
       node.vm.box_version       = "3.3.0"
       node.vm.hostname          = "node#{i}.example.com"
 
-      node.vm.network "private_network", ip: "192.168.56.1#{i}"
+      node.vm.network "public_network", bridge: "en7: USB 10/100/1000 LAN", ip: "192.168.100.11#{i}"
 
       node.vm.provider :virtualbox do |v|
         v.name    = "node#{i}"
